@@ -7,12 +7,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import unipar.edu.atividade_01_b2_github.R
+import unipar.edu.atividade_01_b2_github.data.Person
 
-class Adapter (private val itemList: List<String>) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
+class Adapter(private val itemList: List<Person>) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewItem: TextView = itemView.findViewById(R.id.textViewItem)
-        val editTextItem: EditText = itemView.findViewById(R.id.editTextItem)
+        val textViewName: TextView = itemView.findViewById(R.id.textViewName)
+        val textViewSurname: TextView = itemView.findViewById(R.id.textViewSurname)
+        val textViewAge: TextView = itemView.findViewById(R.id.textViewAge)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -21,7 +23,10 @@ class Adapter (private val itemList: List<String>) : RecyclerView.Adapter<Adapte
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.textViewItem.text = itemList[position]
+        val person = itemList[position]
+        holder.textViewName.text = person.name
+        holder.textViewSurname.text = person.surname
+        holder.textViewAge.text = person.age.toString()
     }
 
     override fun getItemCount(): Int {
